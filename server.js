@@ -5,7 +5,7 @@ const express = require('express');
 // Creating the express server and storing inside the app variable
 const app = express();
 // Port in which the server will run on
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 // Requiring example router
 const userRouter = require('./routes/users.js');
 
