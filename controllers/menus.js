@@ -1,9 +1,9 @@
-const Menu = require('../models/Menu');
+const Menu = require('../models/menu');
 
 module.exports = {
+  validateMenu,
   createMenu,
   getAllMenus,
-  addMenu,
   getMenById,
   updateMenuById,
   deleteMenuById,
@@ -30,7 +30,7 @@ const validateMenu = (req, res) => {
       return res.status(400).send("Missing field(s) required: " + message);
     }
   
-    return null;
+   next();
   };
 
 
@@ -54,36 +54,31 @@ async function getAllMenus(req, res) {
   
     res.json(filteredMenus);
   } catch (err) {
-    res.status(400).json('No Beuno:(');
+    res.status(500).json(err.message);
   }
 }
 
-async function addMenu(req, res) {
-    try {
-        if(validateMenu(req, res) == null){
-            const menu = {
-              id: menus.length + 1,
-              name: req.body.name,
-              description: req.body.description,
-              price: req.body.price,
-              image: req.body.image
-            };
-            menus.push(menu);
-            res.status(201).json(menu);
-        }
-    }catch (err) {
-        res.status(400).json('No Beuno:(');
-    }
+async function createMenu(req, res) {
+  const { name, description, price, image } = req.body;
+  const menu = new Menu({ name, description, price, image });
+
+  try {
+    await menu.save();
+    res.status(201).json(menu);
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
 }
 
 async function getMenById(req, res) {
     try {
         const menu = menus.find(item => item.id === parseInt(req.params.id));
+
         if (!menu) return res.status(404).send('Menu item not found');
         res.json(menu);
       
     } catch (err) {
-        res.status(400).json('No Beuno:(');
+        res.status(400).json(err.message);
     }
 }
 
@@ -100,7 +95,7 @@ async function updateMenuById(req, res) {
       
         res.json(menu);
     } catch (err) {
-        res.status(400).json('No Beuno:(');
+        res.status(400).json(err.message);
     }
 }
 
@@ -112,6 +107,6 @@ async function deleteMenuById(req, res) {
   const deletedMenuItem = menus.splice(menuItemIndex, 1);
   res.json(deletedMenuItem[0]);
     } catch (err) {
-        res.status(400).json('No Beuno:(');
+        res.status(400).json(err.message);
     }
 }
