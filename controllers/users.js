@@ -9,7 +9,7 @@ module.exports = {
   deleteUserById,
 };
 
-const validateUser = (req, res, next) => {
+async function validateUser(req, res, next) {
   const { name, email } = req.body;
   let message = "";
   if (!name) message += 'name, ';

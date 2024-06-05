@@ -20,4 +20,4 @@ const menuSchema = new Schema({
   },
 });
 
-module.exports = model("menu", userSchema);
+module.exports = model("menu", menuSchema);

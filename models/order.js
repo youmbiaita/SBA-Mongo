@@ -19,4 +19,4 @@ const orderSchema = new Schema({
     }
   });
 
-module.exports = model('order', userSchema);
+module.exports = model('order', orderSchema);

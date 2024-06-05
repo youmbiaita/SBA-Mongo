@@ -10,7 +10,7 @@ module.exports = {
 };
 
 //validation middleware
-const validateMenu = (req, res) => {
+async function validateMenu(req, res) {
     const { name, description, price, image } = req.body;
     let message = "";
     if (!name) {

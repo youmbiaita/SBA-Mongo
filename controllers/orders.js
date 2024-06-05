@@ -9,7 +9,7 @@ module.exports = {
     deleteOrderById,
   };
 
-const validateOrder = (req, res, next) => {
+async function validateOrder(req, res, next) {
   const { userId, orderItems, total, status } = req.body;
   let message = "";
   if (!userId) message += 'userId, ';
