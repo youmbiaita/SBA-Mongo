@@ -4,7 +4,7 @@ module.exports = {
   validateMenu,
   createMenu,
   getAllMenus,
-  getMenById,
+  getMenuById,
   updateMenuById,
   deleteMenuById,
 };
@@ -55,13 +55,10 @@ async function createMenu(req, res) {
   }
 }
 
-async function getMenById(req, res) {
+async function getMenuById(req, res) {
     try {
-        const menu = menus.find(item => item.id === parseInt(req.params.id));
-
-        if (!menu) return res.status(404).send('Menu item not found');
-        res.json(menu);
-      
+      const menu = await Menu.findById(req.params.id);
+      res.status(200).json(menu)      
     } catch (err) {
         res.status(400).json(err.message);
     }
@@ -69,29 +66,25 @@ async function getMenById(req, res) {
 
 
 async function updateMenuById(req, res) {
-    try {
-        const menu = menus.find(item => item.id === parseInt(req.params.id));
-        if (!menu) return res.status(404).send('Menu item not found');
-      
-        menu.name = req.body.name || menu.name;
-        menu.description = req.body.description || menu.description;
-        menu.price = req.body.price || menu.price;
-        menu.image = req.body.image || menu.image;
-      
-        res.json(menu);
-    } catch (err) {
-        res.status(400).json(err.message);
-    }
+  try {
+    const updatedMenu = await Menu.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+
+    res.status(200).json(updatedMenu);
+  } catch (err) {
+    res.status(400).send(err);
+  }
 }
 
 async function deleteMenuById(req, res) {
-    try {
-        const menuItemIndex = menus.findIndex(item => item.id === parseInt(req.params.id));
-  if (menuItemIndex === -1) return res.status(404).send('Menu item not found');
+  try {
+    await Menu.findByIdAndDelete(req.params.id);
 
-  const deletedMenuItem = menus.splice(menuItemIndex, 1);
-  res.json(deletedMenuItem[0]);
-    } catch (err) {
-        res.status(400).json(err.message);
-    }
+    res.status(200).json({
+      message: 'Successfully Deleted the Menu',
+    });
+  } catch (err) {
+    res.status(400).send(err);
+  }
 }

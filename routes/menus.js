@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/', menusCtrl.getAllMenus)
 router.post('/', menusCtrl.createMenu);
-router.get('/:id', menusCtrl.getMenById);
+router.get('/:id', menusCtrl.getMenuById);
 router.patch('/:id', menusCtrl.updateMenuById);
 router.delete('/:id', menusCtrl.deleteMenuById)
 

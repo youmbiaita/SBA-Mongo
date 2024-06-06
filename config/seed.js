@@ -21,8 +21,7 @@ const users = [
     name: "Bob", 
     email: "bob@example.com" 
   },
-  { name: 
-    "Charlie", 
+  { name: "Charlie", 
     email: "charlie@example.com" 
   },
 ];
