@@ -68,7 +68,9 @@ async function deleteUserById(req, res) {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
     if (!user) return res.status(404).send('User not found');
-    res.json(user);
+    res.status(200).json({
+      message: 'Successfully Deleted the User',
+    });
   } catch (err) {
     res.status(500).send(err.message);
   }

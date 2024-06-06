@@ -92,7 +92,7 @@ const menus = [
   },
   {
       id: 10,
-      name: ' foufou',
+      name: ' water foufou',
       description: 'cassava ',
       price: 5,
       image: "https://i.ytimg.com/vi/2K-FFs4R0as/maxresdefault.jpg"
