@@ -2,10 +2,12 @@ const { Schema, model } = require('../config/db-connection');
 
 const orderSchema = new Schema({
     userId: { 
-        type: Schema.Types.ObjectId, ref: 'User', required: true },
+        type:Number,
+         ref: 'User',
+        required: true },
     orderItems: [
         { 
-            type: Schema.Types.ObjectId,
+            type: Array,
              ref: 'Menu', 
              required: true 
         }

@@ -35,27 +35,12 @@ async function validateMenu(req, res) {
 
 
 async function getAllMenus(req, res) {
-  try {
-    const { name, description, price, image } = req.query;
-    let filteredMenus = menus;
-  
-    if (name) {
-      filteredMenus = filteredMenus.filter(menu => menu.name.toLowerCase().includes(name.toLowerCase()));
+    try {
+      const menus = await Menu.find();
+      res.json(menus);
+    } catch (err) {
+      res.status(500).send(err.message);
     }
-    if (description) {
-      filteredMenus = filteredMenus.filter(menu => menu.description == description);
-    }
-    if (price) {
-      filteredMenus = filteredMenus.filter(menu => menu.price == price);
-    }
-    if (image) {
-      filteredMenus = filteredMenus.filter(menu => menu.image == image);
-    }
-  
-    res.json(filteredMenus);
-  } catch (err) {
-    res.status(500).json(err.message);
-  }
 }
 
 async function createMenu(req, res) {
