@@ -152,7 +152,7 @@ async function seed() {
   await User.deleteMany({});
 
   const createdmenus = await Menu.create(menus)
-  console.log(createdmenus)
+  // console.log(createdmenus)
   const createdorders = await Order.create(orders)
   console.log(createdorders)
   const createdusers = await User.create(users)
