@@ -5,7 +5,7 @@ const menuSchema = new Schema({
   name: {
     type: String,
     required: true,
-    index: true,
+  
   },
   description: {
     type: String,
