@@ -118,7 +118,7 @@ const orders = [
   },
   {
     userId: "three",
-      orderItems: [3],
+      orderItems: [10],
        total: 20,
       status: 'completed'
   },
