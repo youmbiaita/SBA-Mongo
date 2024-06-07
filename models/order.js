@@ -1,5 +1,6 @@
 const { Schema, model } = require('../config/db-connection');
 
+//Order schema
 const orderSchema = new Schema({
     userId: { 
         type: String,

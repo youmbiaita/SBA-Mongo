@@ -3,6 +3,8 @@ const menusCtrl = require('../controllers/menus.js');
 
 const router = Router();
 
+//Here we call all menu functions
+
 router.get('/', menusCtrl.getAllMenus)
 router.post('/', menusCtrl.createMenu);
 router.get('/:id', menusCtrl.getMenuById);

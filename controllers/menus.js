@@ -1,5 +1,6 @@
 const Menu = require('../models/menu');
 
+//export all functions
 module.exports = {
   validateMenu,
   createMenu,
@@ -33,7 +34,7 @@ async function validateMenu(req, res) {
    next();
   };
 
-
+//function to get all menus
 async function getAllMenus(req, res) {
     try {
       const menus = await Menu.find();
@@ -43,6 +44,7 @@ async function getAllMenus(req, res) {
     }
 }
 
+//function to create a new menu
 async function createMenu(req, res) {
   const { name, description, price, image } = req.body;
   const menu = new Menu({ name, description, price, image });
@@ -55,6 +57,7 @@ async function createMenu(req, res) {
   }
 }
 
+//function to get a menu using Id
 async function getMenuById(req, res) {
     try {
       const menu = await Menu.findById(req.params.id);
@@ -64,7 +67,7 @@ async function getMenuById(req, res) {
     }
 }
 
-
+//function to update a menu using Id
 async function updateMenuById(req, res) {
   try {
     const updatedMenu = await Menu.findByIdAndUpdate(req.params.id, req.body, {
@@ -77,6 +80,7 @@ async function updateMenuById(req, res) {
   }
 }
 
+//function to delete a menu using Id
 async function deleteMenuById(req, res) {
   try {
     await Menu.findByIdAndDelete(req.params.id);

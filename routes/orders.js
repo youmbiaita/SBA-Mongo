@@ -3,6 +3,8 @@ const ordersCtrl = require('../controllers/orders.js');
 
 const router = Router();
 
+//Here we call all order functions
+
 router.get('/', ordersCtrl.getAllOrders)
 router.post('/', ordersCtrl.createOrder);
 router.get('/:id', ordersCtrl.getOrderById);

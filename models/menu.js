@@ -1,5 +1,6 @@
 const { Schema, model } = require("../config/db-connection");
 
+//menu schema
 const menuSchema = new Schema({
   name: {
     type: String,

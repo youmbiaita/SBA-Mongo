@@ -1,5 +1,6 @@
 const User = require('../models/user');
 
+//export all functions
 module.exports = {
   validateUser,
   getAllUsers,
@@ -9,6 +10,7 @@ module.exports = {
   deleteUserById,
 };
 
+//middleware to validate users
 async function validateUser(req, res, next) {
   const { name, email } = req.body;
   let message = "";
@@ -21,6 +23,7 @@ async function validateUser(req, res, next) {
   next();
 };
 
+//function to get all users
 async function getAllUsers(req, res) {
   try {
     const users = await User.find();
@@ -30,6 +33,7 @@ async function getAllUsers(req, res) {
   }
 };
 
+//function to create a new user
 async function createUser(req, res) {
   const { name, email } = req.body;
   const user = new User({ name, email });
@@ -42,6 +46,7 @@ async function createUser(req, res) {
   }
 };
 
+//function to get an user using id
 async function getUserById(req, res) {
   try {
     const user = await User.findById(req.params.id);
@@ -52,6 +57,7 @@ async function getUserById(req, res) {
   }
 };
 
+//function to update an user using id
 async function updateUserById(req, res) {
   const { name, email } = req.body;
 
@@ -64,6 +70,7 @@ async function updateUserById(req, res) {
   }
 };
 
+//function to delete an user using id
 async function deleteUserById(req, res) {
   try {
     const user = await User.findByIdAndDelete(req.params.id);

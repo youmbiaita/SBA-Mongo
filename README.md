@@ -1,7 +1,6 @@
-# API Documentation
 
 ## Description
-This API manages users, menus, and orders for a restaurant application. It provides CRUD operations for these entities.
+This API manages users, menus, and orders for my restaurant application. It provides CRUD operations for these entities.
 
 ## Routes
 

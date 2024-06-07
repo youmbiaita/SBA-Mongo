@@ -4,6 +4,7 @@ const User = require("../models/user");
 const Menu = require("../models/menu");
 const Order = require("../models/order");
 
+// declare users
 const users = [
   {
     name: "John Doe",
@@ -26,6 +27,7 @@ const users = [
   },
 ];
 
+//declare menus
 const menus = [
   {
       id: 1,
@@ -99,6 +101,7 @@ const menus = [
   }
 ];
 
+//declare orders
 const orders = [
   {
       id: 1,

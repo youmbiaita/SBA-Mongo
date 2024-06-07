@@ -1,5 +1,6 @@
 const Order = require('../models/order');
 
+//export all functions
 module.exports = {
     validateOrder,
     getAllOrders,
@@ -9,6 +10,7 @@ module.exports = {
     deleteOrderById,
   };
 
+  //middleware functin to validate orders
 async function validateOrder(req, res, next) {
   const { userId, orderItems, total, status } = req.body;
   let message = "";
@@ -23,6 +25,7 @@ async function validateOrder(req, res, next) {
   next();
 };
 
+//function to get all orders
 async function getAllOrders(req, res) {
   try {
     const orders = await Order.find().populate('userId orderItems');
@@ -32,6 +35,7 @@ async function getAllOrders(req, res) {
   }
 };
 
+//function to create a new order
 async function  createOrder(req, res) {
   const { userId, orderItems, total, status } = req.body;
   const order = new Order({ userId, orderItems, total, status });
@@ -44,6 +48,7 @@ async function  createOrder(req, res) {
   }
 };
 
+//function to get an order using Id
 async function getOrderById(req, res) {
   try {
     const order = await Order.findById(req.params.id).populate('userId orderItems');
@@ -54,6 +59,7 @@ async function getOrderById(req, res) {
   }
 };
 
+//function to update order using Id
 async function updateOrderById(req, res) {
   const { userId, orderItems, total, status } = req.body;
 
@@ -66,6 +72,7 @@ async function updateOrderById(req, res) {
   }
 };
 
+//function to delete an order using Id
 async function deleteOrderById(req, res) {
   try {
     const order = await Order.findByIdAndDelete(req.params.id);
