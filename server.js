@@ -7,9 +7,9 @@ const app = express();
 // Port in which the server will run on
 const PORT = process.env.PORT || 3000;
 // Requiring example router
-const userRouter = require('./routes/users');
-const menuRouter = require('./routes/menus');
-const orderRouter = require('./routes/orders');
+const userRouter = require('./routes/users.js');
+const menuRouter = require('./routes/menus.js');
+const orderRouter = require('./routes/orders.js');
 
 // Configuring the server to accept and parse JSON data.
 app.use(express.json());
